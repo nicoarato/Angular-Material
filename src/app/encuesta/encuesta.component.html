@@ -1,9 +1,54 @@
-<div class="container">
+<!-- <div class="">
 
     <button mat-raised-button color="accent" >Hola mundo</button>
+
 </div>
 
-<!--  -->
-<!--  -->
+
+<button mat-raised-button (click)="isEditable = !isEditable">
+    {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
+  </button> -->
+  
+  <mat-stepper orientation="vertical"  #stepper>
+    <mat-step >
+      <form [formGroup]="formulario" >
+        
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" id="name" placeholder="Last name, First name" required>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button matStepperNext>Next</button>
+        </div>
+
+
+    <mat-step >
+  
+        <ng-template matStepLabel>Fill out your address</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address" id="address" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button matStepperPrevious>Back</button>
+          <button mat-raised-button matStepperNext>Next</button>
+        </div>
+      
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+    </form>
+</mat-step>
+  </mat-stepper>
+
+
 <!--  -->
 <!-- https://codingpotions.com/angular-material -->
